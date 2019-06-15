@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Satisfy&display=swap');
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Satisfy';
+    font-weight: normal;
+}
+a,p,span{
+    font-family: "Roboto";
+    color: black;
+}
+.wrapper {
+    position: relative;
+    min-height: 100%;
+    padding-bottom:  2.5vw; /* the bottom margin is the value of the footer's height */
+}
+.body,html{
+    height: 100%;
+    color: black;
+    font-family: 'Roboto';
+    text-align: center;
+    background-image: url(img/fondo2.jpg);
+}
+.bordes{
+    border: #ff6644  1px ridge;
+    padding: .1vw .1vw .1vw .1vw;
+    border-top-left-radius: 1.2vw;
+    border-bottom-right-radius: 1.2vw;
+}
+.bordes2{
+    border: #1e96e0  1px ridge;
+    border-radius: .5vw;
+}
+.header{
+    color: black;
+    font-family: "Satisfy";
+    background-color: #1afd;
+    width: 100%;
+}
+.header-col{
+    display: inline-block;
+    vertical-align: middle;
+    margin:auto;
+    width: 33%;
+}
+.imgP{
+    width: 8vw;
+    height: auto;
+}
+.logo{
+    width: 24vw;
+    height: auto;
+}
+.izq{
+    position: relative;
+    width: 9%;
+    height: auto;
+    margin: .5vw 0vw 0vw 0vw;
+    //background-color: #e5e5e5;
+}
+.boton{
+    margin: 5.5% auto;
+    display: block;
+    background: #FFA840;
+}
+.botones{
+}
+.imgB{
+    width: 6vw;
+    height: 6vw;
+}
+.search{
+    width: 80%;
+    margin: .5vw 0vw .5vw 0vw;
+    background-color: #bbfffc;
+}
+.search:focus{
+    background-color: #fff;
+}
+.redes{
+    background-color: #FFA840;
+    width: 55%;
+    height: auto;
+    margin: 1vw auto 1vw auto;
+    padding: .5vw 0vw .5vw 0vw;
+}
+.redes-logo{
+    margin: .5vw auto;
+    width: 3vw;
+    height: 3vw;
+    max-height: 10vw;
+    max-width: 10vw;
+}
+.cen{
+    position: relative;
+    display: inline-block;
+    right: 8%;
+    margin: 0% .5% 0% 9%;
+    width: 74%;
+    height: auto;
+}
+.mapa{
+    margin: 0% auto 1% auto;
+    background: #;
+    width: 98%;
+    height: 80%;
+}
+.infoRuta{
+    background-color: #FFA840;
+    padding: 1vw;
+    clear: both;
+    margin: 1vw auto;
+    width: 98%;
+    height: auto;
+}
+.imgCamion{
+    width: 10vw;
+    height: auto;
+}
+.ruta{
+    background-color: white;
+    display: inline-block;
+    margin: auto;
+    width:100%;
+    margin-top: .1vw;
+    border-radius: 1vw;
+}
+.ruta:hover{
+    background-color: #44adeb;
+}
+.infoC{
+    padding: .5vw;
+    width: 19%;
+    vertical-align: middle;
+    display: inline-block;
+}
+.descripcionC{
+    width: 79%;
+    vertical-align: middle;
+    display: inline-block;
+}
+.der{
+    position: relative;
+    display:inline-block;
+    right: 1vw;
+    background-color: #FFA840;
+    width: 15.5vw;
+    height: auto;
+    margin: .5vw 0vw .5vw 0vw;
+    padding: .5vw .5vw .5vw .5vw;
+}
+.fil{
+    margin: .5vw auto;
+    border-radius: 1vw;
+    background-color: white;
+}
+.fil:hover{
+    background-color: #44adeb;
+}
+.img-estrellas{
+    width: 8.5vw;
+}
+.footer{
+    position: absolute;
+    bottom: 0;
+    height: 2.5vw;
+    padding: .5vw;
+    width: 100%;
+    background-color: #1afd;
+}
+.footer-col{
+    display: inline-block;
+    vertical-align: middle;
+    margin:auto;
+    width: 33% !important;
+}
+#qYa:hover{
+    text-decoration: underline white;
+}
