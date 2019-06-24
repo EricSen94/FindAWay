@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta name="viewport" http-equiv="Content-Type" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes; charset=utf-8">
     <!-- Personal JS -->
-    <script src="scripts.js" type="text/javascript"></script>
+    <script src="scripts/vistaContenido.js" type="text/javascript"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Personal CSS -->
@@ -38,7 +38,7 @@
             <img class="imgB" src="img/busquedaB.png">
         </button>
         <!---------------------------------------------Nueva -->
-        <button type="button" onclick="quitarInfo()" class="boton bordes btn btn-outline-info" data-toggle="tooltip collapse" data-placement="left"  data-target=".multi-collapse" aria-expanded="false" title="Limpiar búsqueda" aria-controls="buscar infoRuta" >
+        <button type="button" onclick="clearMap()" class="boton bordes btn btn-outline-info" data-toggle="tooltip collapse" data-placement="left"  data-target=".multi-collapse" aria-expanded="false" title="Limpiar búsqueda" aria-controls="buscar infoRuta" >
             <img class="imgB" src="img/nuevaB.png" >
         </button>
         <!---------------------------------------------Calificar -->
@@ -67,7 +67,7 @@
             <!-- Agregar algo para hacer el data-toogle="collapse" con data-target="#infoRuta" y asi desplegar el menu de informacion ruta
                  y hacer un href="#flagNameRuta" para hacer que la pagina haga scroll down y el usuario se de cuenta-->
             <a href="#flagNameRuta" type="button" class="btn btn-link" data-toggle="collapse" data-target="#infoRuta" aria-expanded="false" aria-controls="infoRuta" onclick="mostrarInfo()">
-                <img src="img/map.png" width="100%" height="auto">
+                <iframe id="main-map" src="https://www.google.com/maps/d/embed?mid=1sAdyj55AKuJ4RV2gjA0Q4rBM8q-VsDi5" width="1100" height="480"></iframe>
             </a>
         </section>
             <div class="infoRuta bordes2 collapse" id="infoRuta">
@@ -102,11 +102,13 @@
     <section id="sDer" class="position-fixed der bordes">
         <h1 hidden>SECTION DER</h1>
             <h3>Top 10 Rutas</h3>
+                <a href="#" type="button" onclick="loadMap()">
                 <div class="fil">
                     <span>RUTA 1
                     <img src="img/5estrellas.png" class="img-estrellas">
                     </span>
                 </div>
+                </a>
                 <div class="fil">
                     <span>RUTA 1
                     <img src="img/5estrellas.png" class="img-estrellas">

@@ -3,6 +3,20 @@ function mostrarInfo(){
     ob.style.display="block";
     document.getElementById("flagNameRuta").scrollIntoView(false);
 }
+
+//Funcion para cargar cada mapa
+function loadMap()
+{
+    document.getElementById('main-map').src = "https://www.google.com/maps/d/embed?mid=1_hCLxFvRH0-V_tvteuGLWY9xNlk&hl=es-419";
+}
+
+//Funcion para limpiar el mapa
+function clearMap()
+{
+    document.getElementById('main-map').src = "https://www.google.com/maps/d/embed?mid=1sAdyj55AKuJ4RV2gjA0Q4rBM8q-VsDi5";
+    quitarInfo();
+}
+
 function quitarInfo(){
     var ob = document.getElementById("infoRuta");
     ob.style.display="none";
