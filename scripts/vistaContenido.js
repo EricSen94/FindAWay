@@ -4,9 +4,17 @@ function mostrarInfo(){
     document.getElementById("flagNameRuta").scrollIntoView(false);
 }
 //Funcion para cargar cada mapa
+//en loadmap("nombreRuta")
 function loadMap()
 {
-    document.getElementById('main-map').src = "https://www.google.com/maps/d/embed?mid=1_hCLxFvRH0-V_tvteuGLWY9xNlk&hl=es-419";
+    //hacer un link para cada ruta
+    var ruta10="https://www.google.com/maps/d/embed?mid=1_hCLxFvRH0-V_tvteuGLWY9xNlk&hl=es-419";
+    //hacer un case con las diferentes nombres de las rutas
+    //switch (nombreRuta)
+    //case "ruta10"
+    //document.getElementById('main-map').src = ruta10;
+    //break;
+    document.getElementById('main-map').src = ruta10;
     mostrarInfo()
 }
 //Funcion para limpiar el mapa
