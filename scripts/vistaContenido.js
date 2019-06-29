@@ -3,13 +3,12 @@ function mostrarInfo(){
     ob.style.display="block";
     document.getElementById("flagNameRuta").scrollIntoView(false);
 }
-
 //Funcion para cargar cada mapa
 function loadMap()
 {
     document.getElementById('main-map').src = "https://www.google.com/maps/d/embed?mid=1_hCLxFvRH0-V_tvteuGLWY9xNlk&hl=es-419";
+    mostrarInfo()
 }
-
 //Funcion para limpiar el mapa
 function clearMap()
 {
@@ -21,13 +20,14 @@ function quitarInfo(){
     var ob = document.getElementById("infoRuta");
     ob.style.display="none";
 }
-//INNERHTML Y AJAX
+//Funcion para agregar la página de preguntas y respuestas
 function loadDoc(opc){
          var xhttp = getObjXMLHttpRequest();
          xhttp.open('GET','q&a.php',true);
          xhttp.onreadystatechange = function(){
          if (this.readyState == 4 && this.status == 200){
              switch(opc){
+                //Case de la página q&a
                  case 1: document.getElementById("body").innerHTML = xhttp.responseText;
                 break;
              }
