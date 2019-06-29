@@ -63,7 +63,7 @@ a,p,span{
 }
 .botones{
 }
-.imgB{
+.imgBtn{
     width: 6vw;
     height: 6vw;
 }
@@ -98,10 +98,16 @@ a,p,span{
     height: auto;
 }
 .mapa{
-    margin: 0% auto 1% auto;
-    background: #;
+    position: relative;
+    margin-top: 5px;
     width: 98%;
-    height: 80%;
+    height: 35vw;
+}
+#main-map{
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    width: 100%;
+    height: 100%;
 }
 .infoRuta{
     background-color: #FFA840;
@@ -147,16 +153,32 @@ a,p,span{
     margin: .5vw 0vw .5vw 0vw;
     padding: .5vw .5vw .5vw .5vw;
 }
-.fil{
+.fil-header{
     margin: .5vw auto;
     border-radius: 1vw;
     background-color: white;
 }
-.fil:hover{
-    background-color: #44adeb;
+.fil-content{
+    text-align: left;
+    width: 95%;
+    margin: 0px auto 0px auto;
+    border-radius: 1vw;
+    text-decoration: none;
 }
-.img-estrellas{
-    width: 8.5vw;
+.fil-header:hover{
+    background-color: #44adeb;
+    width: 95%;
+}
+.fil-content:hover{
+    text-decoration: none;
+    background-color: #44adeb;
+    width: 90%;
+}
+.imgBu{
+    width: 4vw;
+}
+.imgE{
+    width: 6vw;
 }
 .footer{
     position: absolute;
