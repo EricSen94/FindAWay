@@ -16,6 +16,10 @@ function calificar(){
 function enviarCalificacion(){
 //sumar la calificacion haciendo un promedio entre 2 
 //calificacion a enviar = calificacion actual de la base de datos + calificacion mandada por el usuario / 2
+//if calificacion a enviar - Math.floor(calificacion a enviar) > .5 
+//entonces calificacion a enviar = ceil(calificacion a enviar)
+//else if calificacion a enviar - Math.floor(calificacion a enviar) < .5
+//entonces calificacion a enviar = floor(calificacion a enviar)
 //enviarla a la base de datos
 //variableSQL = "enviar a calificiones $calificacionAEnviar WHERE id.ruta = rutaSeleccionada.id.ruta"
 }
