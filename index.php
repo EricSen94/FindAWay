@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php
+    $conexion='"localhost", "root", "", "findaway"';
+    $link = new mysqli($conexion);
+    if($link->connect_error){
+			    echo "Falló la conexión ".$link->connect_error."<br/>";
+			} else echo "alert('Mala conexion a base de datos')";
+?>
 <html lang="es">
   <head>
     <!-- Required meta tags -->
@@ -33,17 +40,18 @@
     <!---------------------------------------------Seccion IZQUIERDA-->
     <section id="sIzq" class="position-fixed izq">
         <h1 hidden >SECTION IZQ</h1>
-        <!---------------------------------------------Buscar-->
+<!---------------------------------------------Buscar --
         <button type="button" class="boton bordes btn btn-outline-info" ddata-placement="left" title="Búsqueda" onclick="funcionParaSolicitarBusqueda">
-            <img class="imgB" src="img/busquedaB.png">
+            <img class="imgBtn" src="img/busquedaB.png">
         </button>
-        <!---------------------------------------------Nueva -->
+-->
+        <!---------------------------------------------Limpiar -->
         <button type="button" onclick="clearMap()" class="boton bordes btn btn-outline-info" data-toggle="tooltip collapse" data-placement="left"  data-target=".multi-collapse" aria-expanded="false" title="Limpiar búsqueda" aria-controls="buscar infoRuta" >
-            <img class="imgB" src="img/nuevaB.png" >
+            <img class="imgBtn" src="img/nuevaB.png" >
         </button>
         <!---------------------------------------------Calificar -->
         <button type="button" data-toggle="tooltip" data-placement="left" title="Calificar Ruta" class="boton bordes btn btn-outline-info">
-            <img src="img/estrellaB.png" class="imgB">
+            <img src="img/estrellaB.png" class="imgBtn">
         </button>
         <section class="redes bordes">
             <h5>REDES</h5>
@@ -57,17 +65,19 @@
     <!---------------------------------------------Seccion CENTRO-->
     <section id="sCen" class="cen">
         <h1 hidden>SECTION CEN</h1>
-        <div id="buscar">
+<!--        <div id="buscar">
             <form>
                 <input class="search bordes2" type="search" placeholder="Búsqueda">
             </form>
         </div>
-        <section class="mapa bordes2">
+-->
+        <br>
+        <section class="mapa bordes2" style="height:35vw;">
             <!-- Cambiar por el mapa de google -->
             <!-- Agregar algo para hacer el data-toogle="collapse" con data-target="#infoRuta" y asi desplegar el menu de informacion ruta
                  y hacer un href="#flagNameRuta" para hacer que la pagina haga scroll down y el usuario se de cuenta-->
-            <a href="#flagNameRuta" type="button" class="btn btn-link" data-toggle="collapse" data-target="#infoRuta" aria-expanded="false" aria-controls="infoRuta" onclick="mostrarInfo()">
-                <iframe id="main-map" src="https://www.google.com/maps/d/embed?mid=1sAdyj55AKuJ4RV2gjA0Q4rBM8q-VsDi5" width="1100" height="480"></iframe>
+            <a href="#flagNameRuta"type="button" class="btn btn-link" data-toggle="collapse" data-target="#infoRuta" aria-expanded="false" aria-controls="infoRuta" onclick="mostrarInfo()">
+                <iframe id="main-map" src="https://www.google.com/maps/d/embed?mid=1sAdyj55AKuJ4RV2gjA0Q4rBM8q-VsDi5" frameborder="0" height="100%" width="100%" allowfullscreen></iframe>
             </a>
         </section>
             <div class="infoRuta bordes2 collapse" id="infoRuta">
@@ -101,59 +111,61 @@
     <!---------------------------------------------Seccion DERECHA-->
     <section id="sDer" class="position-fixed der bordes">
         <h1 hidden>SECTION DER</h1>
-            <h3>Top 10 Rutas</h3>
-                <a href="#" type="button" onclick="loadMap()">
-                <div class="fil">
-                    <span>RUTA 1
-                    <img src="img/5estrellas.png" class="img-estrellas">
-                    </span>
+            <h3><img class="imgBu" src="img/busquedaB.png"> Zonas</h3>
+                <div class="fil-header">
+                    <a id="CU-h" type="botton" class="btn btn-link" data-toggle="collapse" data-target="#CU-c" aria-controls="CU-c">
+                    Ciudad Universitaria (CU)
+                    </a>
                 </div>
-                </a>
-                <div class="fil">
-                    <span>RUTA 1
-                    <img src="img/5estrellas.png" class="img-estrellas">
-                    </span>
+                        <div id="CU-c" class="fil-content collapse" aria-labelledby="CU-h" data-parent="#sDer">
+                            <ul>
+                            <li><a href="#" onclick="loadMap()">
+                                <?php
+                                    $link-query("");
+                                ?>
+                                <img src="img/5estrellas.png" class="imgE"></a></li>
+                            </ul>
+                        </div>
+                <div class="fil-header">
+                    <a id="CAPU-h" type="botton" class="btn btn-link" data-toggle="collapse" data-target="#CAPU-c" aria-controls="CAPU-c">
+                    Central de Autobuses de Puebla (CAPU)
+                    </a>
                 </div>
-                <div class="fil">
-                    <span>RUTA 1
-                    <img src="img/5estrellas.png" class="img-estrellas">
-                    </span>
+                        <div id="CAPU-c" class="fil-content collapse" aria-labelledby="CAPU-h" data-parent="#sDer">
+                            <ul>
+                            <li><p>Soy contenido</p></li>
+                            </ul>
+                        </div>
+                <div class="fil-header">
+                   <a id="Loreto-h" type="botton" class="btn btn-link" data-toggle="collapse" data-target="#Loreto-c" aria-controls="Loreto-c">
+                    Los fuertes de Loreto
+                    </a>
                 </div>
-                <div class="fil">
-                    <span>RUTA 1
-                    <img src="img/5estrellas.png" class="img-estrellas">
-                    </span>
+                        <div id="Loreto-c" class="fil-content collapse" aria-labelledby="Loreto-h" data-parent="#sDer">
+                            <ul>
+                            <li><p>Soy contenido</p></li>
+                            </ul>
+                        </div>
+                <div class="fil-header">
+                    <a id="Ange-h" type="botton" class="btn btn-link" data-toggle="collapse" data-target="#Ange-c" aria-controls="Ange-c">
+                    Angelópolis centro comercial
+                    </a>
                 </div>
-                <div class="fil">
-                    <span>RUTA 1
-                    <img src="img/5estrellas.png" class="img-estrellas">
-                    </span>
+                        <div id="Ange-c" class="fil-content collapse" aria-labelledby="Ange-h" data-parent="#sDer">
+                            <ul>
+                            <li><p>Soy contenido</p></li>
+                            </ul>
+                        </div>
+                <div class="fil-header">
+                    <a id="CCU-h" type="botton" class="btn btn-link" data-toggle="collapse" data-target="#CCU-c" aria-controls="CCU-c">
+                    Complejo Cultural Universitario (CCU)
+                    </a>
                 </div>
-                <div class="fil">
-                    <span>RUTA 1
-                    <img src="img/5estrellas.png" class="img-estrellas">
-                    </span>
-                </div>
-                <div class="fil">
-                    <span>RUTA 1
-                    <img src="img/5estrellas.png" class="img-estrellas">
-                    </span>
-                </div>
-                <div class="fil">
-                    <span>RUTA 1
-                    <img src="img/5estrellas.png" class="img-estrellas">
-                    </span>
-                </div>
-                <div class="fil">
-                    <span>RUTA 1
-                    <img src="img/5estrellas.png" class="img-estrellas">
-                    </span>
-                </div>
-                <div class="fil">
-                    <span>RUTA 1
-                    <img src="img/5estrellas.png" class="img-estrellas">
-                    </span>
-                </div>
+                        <div id="CCU-c" class="fil-content collapse" aria-labelledby="CCU-h" data-parent="#sDer">
+                            <ul>
+                            <li><p>Soy contenido</p></li>
+                            </ul>
+                        </div>
     </section>
     <!-- -------------------------------------------------------------------------------------------------------------------------- -->
     <!---------------------------------------------Seccion FOOTER-->
