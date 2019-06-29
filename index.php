@@ -117,11 +117,18 @@
                 </div>
                         <div id="CU-c" class="fil-content collapse" aria-labelledby="CU-h" data-parent="#sDer">
                             <ul>
-                            <li><a href="#" onclick="loadMap()">
+                            <li>
                                 <?php
-                                    $link-query("");
+                                    $lRutas = $link-query("SELECT rutas.nombre,calificaciones.cant_estrellas FROM rutas INNER JOIN calificaciones ON rutas.id_ruta=calificaciones.id_calificacion WHERE nombre_destino = 'CU' ORDER BY calificaciones.cant_estrellas DESC");
+                                    $ref='<a href="#" onclick="loadMap()">';
+                                    //Ciclo para imprimir n rutas acomodadas por mayor calificacion
+                                    while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
+                                        $nomRuta = $arrayRutas['rutas.nombre'];
+                                        $cantEstrellas = $arrayRutas['calificaciones.cant_estrellas'];
+                                        echo "<li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a>'."</li";
+                                    }
+				                    $lRutas->free();
                                 ?>
-                                <img src="img/5estrellas.png" class="imgE"></a></li>
                             </ul>
                         </div>
                 <div class="fil-header">
@@ -131,7 +138,19 @@
                 </div>
                         <div id="CAPU-c" class="fil-content collapse" aria-labelledby="CAPU-h" data-parent="#sDer">
                             <ul>
-                            <li><p>Soy contenido</p></li>
+                            <li><a href="#" onclick="loadMap()">
+                                <?php
+                                    $lRutas = $link-query("SELECT rutas.nombre,calificaciones.cant_estrellas FROM rutas INNER JOIN calificaciones ON rutas.id_ruta=calificaciones.id_calificacion WHERE nombre_destino = 'CAPU' ORDER BY calificaciones.cant_estrellas DESC");
+                                    $ref='<a href="#" onclick="loadMap()">';
+                                    //Ciclo para imprimir n rutas acomodadas por mayor calificacion
+                                    while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
+                                        $nomRuta = $arrayRutas['rutas.nombre'];
+                                        $cantEstrellas = $arrayRutas['calificaciones.cant_estrellas'];
+                                        echo "<li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a>'."</li";
+                                    }
+				                    $lRutas->free();
+                                ?>
+                                <img src="img/5estrellas.png" class="imgE"></a></li>
                             </ul>
                         </div>
                 <div class="fil-header">
@@ -141,7 +160,19 @@
                 </div>
                         <div id="Loreto-c" class="fil-content collapse" aria-labelledby="Loreto-h" data-parent="#sDer">
                             <ul>
-                            <li><p>Soy contenido</p></li>
+                            <li><a href="#" onclick="loadMap()">
+                                <?php
+                                    $lRutas = $link-query("SELECT rutas.nombre,calificaciones.cant_estrellas FROM rutas INNER JOIN calificaciones ON rutas.id_ruta=calificaciones.id_calificacion WHERE nombre_destino = 'Fuertes' ORDER BY calificaciones.cant_estrellas DESC");
+                                    $ref='<a href="#" onclick="loadMap()">';
+                                    //Ciclo para imprimir n rutas acomodadas por mayor calificacion
+                                    while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
+                                        $nomRuta = $arrayRutas['rutas.nombre'];
+                                        $cantEstrellas = $arrayRutas['calificaciones.cant_estrellas'];
+                                        echo "<li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a>'."</li";
+                                    }
+				                    $lRutas->free();
+                                ?>
+                                <img src="img/5estrellas.png" class="imgE"></a></li>
                             </ul>
                         </div>
                 <div class="fil-header">
@@ -151,7 +182,19 @@
                 </div>
                         <div id="Ange-c" class="fil-content collapse" aria-labelledby="Ange-h" data-parent="#sDer">
                             <ul>
-                            <li><p>Soy contenido</p></li>
+                            <li><a href="#" onclick="loadMap()">
+                                <?php
+                                    $lRutas = $link-query("SELECT rutas.nombre,calificaciones.cant_estrellas FROM rutas INNER JOIN calificaciones ON rutas.id_ruta=calificaciones.id_calificacion WHERE nombre_destino = 'Angelópolis' ORDER BY calificaciones.cant_estrellas DESC");
+                                    $ref='<a href="#" onclick="loadMap()">';
+                                    //Ciclo para imprimir n rutas acomodadas por mayor calificacion
+                                    while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
+                                        $nomRuta = $arrayRutas['rutas.nombre'];
+                                        $cantEstrellas = $arrayRutas['calificaciones.cant_estrellas'];
+                                        echo "<li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a>'."</li";
+                                    }
+				                    $lRutas->free();
+                                ?>
+                                <img src="img/5estrellas.png" class="imgE"></a></li>
                             </ul>
                         </div>
                 <div class="fil-header">
@@ -161,7 +204,19 @@
                 </div>
                         <div id="CCU-c" class="fil-content collapse" aria-labelledby="CCU-h" data-parent="#sDer">
                             <ul>
-                            <li><p>Soy contenido</p></li>
+                            <li><a href="#" onclick="loadMap()">
+                                <?php
+                                    $lRutas = $link-query("SELECT rutas.nombre,calificaciones.cant_estrellas FROM rutas INNER JOIN calificaciones ON rutas.id_ruta=calificaciones.id_calificacion WHERE nombre_destino = 'CCU' ORDER BY calificaciones.cant_estrellas DESC");
+                                    $ref='<a href="#" onclick="loadMap()">';
+                                    //Ciclo para imprimir n rutas acomodadas por mayor calificacion
+                                    while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
+                                        $nomRuta = $arrayRutas['rutas.nombre'];
+                                        $cantEstrellas = $arrayRutas['calificaciones.cant_estrellas'];
+                                        echo "<li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a>'."</li";
+                                    }
+				                    $lRutas->free();
+                                ?>
+                                <img src="img/5estrellas.png" class="imgE"></a></li>
                             </ul>
                         </div>
     </section>
@@ -172,7 +227,7 @@
             <span>¡Cuentanos tu experiencia!</span>
         </section>
         <section class="footer-col">
-            <span>Copyrights &copy; 2019</span>
+            <span>Copyrights &copy; 2019 Find A Way</span>
         </section>
         <section class="footer-col">
             <span>¿Tienes dudas? | </span>
@@ -188,5 +243,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- Personal JS -->
     <script src="scripts/vistaContenido.js" type="text/javascript"></script>
+    <script src="scripts/vinculacion.js" type="text/javascript"></script>
   </body>
 </html>
