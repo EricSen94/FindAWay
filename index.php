@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <?php
-    $conexion='"localhost", "root", "", "findaway"';
-    $link = new mysqli($conexion);
+    $conexionAddress="localhost";
+    $conexionUser="root";
+    $conexionPass="";
+    $conexionDB="findaway";
+    $link = new mysqli($conexionAddress,$conexionUser,$conexionPass,$conexionDB);
     if($link->connect_error){
 			    echo "Falló la conexión ".$link->connect_error."<br/>";
 			} else echo "alert('Mala conexion a base de datos')";
