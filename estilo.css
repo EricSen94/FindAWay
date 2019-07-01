@@ -163,6 +163,11 @@ a,p,span{
     width: 95%;
     margin: 0px auto 0px auto;
     border-radius: 1vw;
+}
+.fil-content li{
+    list-style-type:none;
+}
+.fil-content li a{
     text-decoration: none;
 }
 .fil-header:hover{
