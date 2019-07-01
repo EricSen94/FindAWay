@@ -143,6 +143,9 @@ a,p,span{
     vertical-align: middle;
     display: inline-block;
 }
+.nombreRuta{
+    text-transform: capitalize;
+}
 .der{
     position: relative;
     display:inline-block;
@@ -161,6 +164,7 @@ a,p,span{
 .fil-content{
     text-align: left;
     width: 95%;
+    padding-top: 5px;
     margin: 0px auto 0px auto;
     border-radius: 1vw;
 }
