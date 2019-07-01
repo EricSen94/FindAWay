@@ -190,7 +190,7 @@
                 </div>
                         <div id="Ange-c" class="fil-content collapse" aria-labelledby="Ange-h" data-parent="#sDer">
                                 <?php
-                                    if($lRutas = $link->query("SELECT rutas.nombre, calificaciones.cant_estrellas FROM rutas LEFT JOIN calificaciones ON rutas.id_ruta=calificaciones.id_ruta WHERE rutas.nombre_destino = 'Angelópolis' ORDER BY calificaciones.cant_estrellas DESC")){
+                                    if($lRutas = $link->query("SELECT rutas.nombre, calificaciones.cant_estrellas FROM rutas LEFT JOIN calificaciones ON rutas.id_ruta=calificaciones.id_ruta WHERE rutas.nombre_destino = 'Angelopolis' ORDER BY calificaciones.cant_estrellas DESC")){
                                         $ref='<a href="#" onclick="loadMap()">';
                                         //Ciclo para imprimir n rutas acomodadas por mayor calificacion
                                         while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
