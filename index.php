@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <?php
-    $conexionAddress="localhost";
-    $conexionUser="root";
-    $conexionPass="";
-    $conexionDB="findaway";
-    $link = new mysqli($conexionAddress,$conexionUser,$conexionPass,$conexionDB);
-    if($link->connect_error){
-			    echo "<script>alert('Mala conexion a base de datos')</script>
-                <p>Falló la conexión ".$link->connect_error."</p>";
-    } //else echo "<script>alert('Conectado a la base de datos')</script>";
+    require 'scripts/Datos.php';
 ?>
 <html lang="es">
   <head>
@@ -86,25 +78,7 @@
                 <h1 id="flagNameRuta">Información Rutas</h1>
                 <!-- importante -->
                 <!-- Crear una funcion que vaya agregando N sections dependiendo de las rutas que pasan por el lugar buscado. en cada section poner cada una de las rutas -->
-                <section class="ruta">
-                    <section class="infoC">
-                        <img src="img/camiones/camion.jpg" class="imgCamion">
-                        <span class="NombreRuta">Boulevard CU</span>
-                    </section>
-                    <section class="descripcionC">
-                        <span>Las calles que serán parte del nuevo derrotero de las rutas que no desaparecen son la avenida 14 Sur, Bulevar 18 Sur, San Claudio, Circuito Juan Pablo II, 31 Oriente-Poniente, 15 Norte-Sur, 4 Poniente, avenida Reforma, Teziutlán sur, laterales del Periférico y Bulevar Municipio Libre.
-                        </span>
-                    </section>
-                </section>
-                <section class="ruta">
-                    <section class="infoC">
-                        <img src="img/camiones/camion.jpg" class="imgCamion">
-                        <span class="NombreRuta">Boulevard CU</span>
-                    </section>
-                    <section class="descripcionC">
-                        <p>Las calles que serán parte del nuevo derrotero de las rutas que no desaparecen son la avenida 14 Sur, Bulevar 18 Sur, San Claudio, Circuito Juan Pablo II, 31 Oriente-Poniente, 15 Norte-Sur, 4 Poniente, avenida Reforma, Teziutlán sur, laterales del Periférico y Bulevar Municipio Libre.
-                        </p>
-                    </section>
+                <section id="ruta" class="ruta">
                 </section>
             </div>
     </section>
@@ -121,20 +95,8 @@
                 </div>
                         <div id="CU-c" class="collapse" aria-labelledby="CU-h" data-parent="#sDer">
                                 <?php
-                                    if($lRutas = $link->query("SELECT rutas.nombre, calificaciones.cant_estrellas FROM rutas LEFT JOIN calificaciones ON rutas.id_ruta=calificaciones.id_ruta WHERE rutas.nombre_destino = 'CU' ORDER BY calificaciones.cant_estrellas DESC")){
-                                        $ref='<a href="#" onclick="loadMap()">';
-                                        //Ciclo para imprimir n rutas acomodadas por mayor calificacion
-                                        while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
-                                            $nomRuta = $arrayRutas['nombre'];
-                                            $cantEstrellas = $arrayRutas['cant_estrellas'];
-                                            if($cantEstrellas == 0){
-                                                echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/0.png" class="imgE"></a></li></ul>';
-                                            }
-                                            else echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a></li></ul>';
-                                        }
-                                        $lRutas->free();
-                                    }
-                                    else echo "<script> alert('Error en la consulta')</script>";
+                                    $tabla = new Datos();
+                                    $tabla->llenarTabla('CU');
                                 ?>
                         </div>
                 <div class="fil-header">
@@ -144,20 +106,8 @@
                 </div>
                         <div id="CAPU-c" class="fil-content collapse" aria-labelledby="CAPU-h" data-parent="#sDer">
                                 <?php
-                                    if($lRutas = $link->query("SELECT rutas.nombre, calificaciones.cant_estrellas FROM rutas LEFT JOIN calificaciones ON rutas.id_ruta=calificaciones.id_ruta WHERE rutas.nombre_destino = 'CAPU' ORDER BY calificaciones.cant_estrellas DESC")){
-                                        $ref='<a href="#" onclick="loadMap()">';
-                                        //Ciclo para imprimir n rutas acomodadas por mayor calificacion
-                                        while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
-                                            $nomRuta = $arrayRutas['nombre'];
-                                            $cantEstrellas = $arrayRutas['cant_estrellas'];
-                                            if($cantEstrellas == 0){
-                                                echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/0.png" class="imgE"></a></li></ul>';
-                                            }
-                                            else echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a></li></ul>';
-                                        }
-                                        $lRutas->free();
-                                    }
-                                    else echo "<script> alert('Error en la consulta')</script>";
+                                    $tabla = new Datos();
+                                    $tabla->llenarTabla('CAPU');
                                 ?>
                         </div>
                 <div class="fil-header">
@@ -167,20 +117,8 @@
                 </div>
                         <div id="Loreto-c" class="fil-content collapse" aria-labelledby="Loreto-h" data-parent="#sDer">
                                 <?php
-                                    if($lRutas = $link->query("SELECT rutas.nombre, calificaciones.cant_estrellas FROM rutas LEFT JOIN calificaciones ON rutas.id_ruta=calificaciones.id_ruta WHERE rutas.nombre_destino = 'Fuertes' ORDER BY calificaciones.cant_estrellas DESC")){
-                                        $ref='<a href="#" onclick="loadMap()">';
-                                        //Ciclo para imprimir n rutas acomodadas por mayor calificacion
-                                        while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
-                                            $nomRuta = $arrayRutas['nombre'];
-                                            $cantEstrellas = $arrayRutas['cant_estrellas'];
-                                            if($cantEstrellas == 0){
-                                                echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/0.png" class="imgE"></a></li></ul>';
-                                            }
-                                            else echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a></li></ul>';
-                                        }
-                                        $lRutas->free();
-                                    }
-                                    else echo "<script> alert('Error en la consulta')</script>";
+                                    $tabla = new Datos();
+                                    $tabla->llenarTabla('Fuertes');
                                 ?>
                         </div>
                 <div class="fil-header">
@@ -190,20 +128,8 @@
                 </div>
                         <div id="Ange-c" class="fil-content collapse" aria-labelledby="Ange-h" data-parent="#sDer">
                                 <?php
-                                    if($lRutas = $link->query("SELECT rutas.nombre, calificaciones.cant_estrellas FROM rutas LEFT JOIN calificaciones ON rutas.id_ruta=calificaciones.id_ruta WHERE rutas.nombre_destino = 'Angelopolis' ORDER BY calificaciones.cant_estrellas DESC")){
-                                        $ref='<a href="#" onclick="loadMap()">';
-                                        //Ciclo para imprimir n rutas acomodadas por mayor calificacion
-                                        while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
-                                            $nomRuta = $arrayRutas['nombre'];
-                                            $cantEstrellas = $arrayRutas['cant_estrellas'];
-                                            if($cantEstrellas == 0){
-                                                echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/0.png" class="imgE"></a></li></ul>';
-                                            }
-                                            else echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a></li></ul>';
-                                        }
-                                        $lRutas->free();
-                                    }
-                                    else echo "<script> alert('Error en la consulta')</script>";
+                                    $tabla = new Datos();
+                                    $tabla->llenarTabla('Angelopolis');
                                 ?>
                         </div>
                 <div class="fil-header">
@@ -213,20 +139,8 @@
                 </div>
                         <div id="CCU-c" class="fil-content collapse" aria-labelledby="CCU-h" data-parent="#sDer">
                                 <?php
-                                    if($lRutas = $link->query("SELECT rutas.nombre, calificaciones.cant_estrellas FROM rutas LEFT JOIN calificaciones ON rutas.id_ruta=calificaciones.id_ruta WHERE rutas.nombre_destino = 'CCU' ORDER BY calificaciones.cant_estrellas DESC")){
-                                        $ref='<a href="#" onclick="loadMap()">';
-                                        //Ciclo para imprimir n rutas acomodadas por mayor calificacion
-                                        while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
-                                            $nomRuta = $arrayRutas['nombre'];
-                                            $cantEstrellas = $arrayRutas['cant_estrellas'];
-                                            if($cantEstrellas == 0){
-                                                echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/0.png" class="imgE"></a></li></ul>';
-                                            }
-                                            else echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a></li></ul>';
-                                        }
-                                        $lRutas->free();
-                                    }
-                                    else echo "<script> alert('Error en la consulta')</script>";
+                                    $tabla = new Datos();
+                                    $tabla->llenarTabla('CCU');
                                 ?>
                         </div>
     </section>
