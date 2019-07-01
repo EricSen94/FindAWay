@@ -3,9 +3,6 @@ require 'scripts/conexion.php';
     
 class Datos{
     private $conexion;
-    private $nomRuta;
-    private $descRuta;
-    private $infoRuta;
     
     function __construct(){
         $this->conexion = new conectarDB();
@@ -17,29 +14,14 @@ class Datos{
         //Ciclo para imprimir n rutas acomodadas por mayor calificacion
         $n=0;
         while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
-            $ref='<a href="#" onclick="loadMap()">';
-            $numRutas= $lRutas->num_rows;
             $nomRuta = $arrayRutas['nombre'];
             $descRuta = $arrayRutas['descripcion'];
-            $cantEstrellas = $arrayRutas['cant_estrellas'];
-            $infoRuta[$n] ='<section class="ruta"><section class="infoC"><img src="img/camiones/'.$nomRuta.'.jpg" class="imgCamion"><span class="nombreRuta"><br>'.$nomRuta.'</span></section><section class="descripcionC"><p>'.$descRuta.'</p></section></section>';
-
-            if($cantEstrellas == 0){
-                echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/0.png" class="imgE"></a></li></ul>';
-                //Econtrar la forma de que no se llene todo 
-                echo "<script> document.getElementById('ruta').insertAdjacentHTML('beforebegin', '".$infoRuta[$n]."');</script>";
-            }
-            else{
-                echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a></li></ul>';
-                //Econtrar la forma de que no se llene todo 
-                echo "<script> document.getElementById('ruta').insertAdjacentHTML('beforebegin', '".$infoRuta[$n]."');</script>";
-            }
-            $n+=1;
+            $cantEstrellas = floatval($arrayRutas['cant_estrellas']);
+            $ref='<a class="nombreRuta fil-content" href="#Iruta" onclick="llenarInfo(\''.utf8_encode ($nomRuta).'\',\''.utf8_encode($descRuta).'\', loadMap)">';
+            
+            echo $ref."<div class='fil-col'><span>".$nomRuta."</span></div><div class='fil-col'><img src='img/estrellas/".$cantEstrellas.".png' class='imgE'></div></a>";
         }
         $lRutas->free();
-    }
-    public function llenarInfo(){
-        echo "<script> document.getElementById('ruta').insertAdjacentHTML('beforebegin', '".$infoRuta."');</script>";
     }
 }
 ?>
