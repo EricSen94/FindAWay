@@ -29,7 +29,7 @@
       </section>
   </header>
 
-        <h1>PAGINA EN MANTENIMIENTO</h1>
+        <h1 style="margin-top:15vw;font-size: 80pt;text-align: center;vertical-align: middle;">PAGINA EN MANTENIMIENTO</h1>
 
       <!-- -------------------------------------------------------------------------------------------------------------------------- -->
     <!---------------------------------------------Seccion FOOTER-->
@@ -38,7 +38,7 @@
             <span>¡Cuentanos tu experiencia!</span>
         </section>
         <section class="footer-col">
-            <span style="display:inline">Copyrights &copy; 2019</span>
+            <span style="display:inline">Copyrights &copy; 2019 Find A Way</span>
         </section>
         <section class="footer-col">
             <span>¿Tienes dudas? | </span>
