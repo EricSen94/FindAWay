@@ -6,13 +6,14 @@
     $conexionDB="findaway";
     $link = new mysqli($conexionAddress,$conexionUser,$conexionPass,$conexionDB);
     if($link->connect_error){
-			    echo "Falló la conexión ".$link->connect_error."<br/>";
-			} else echo "alert('Mala conexion a base de datos')";
+			    echo "<script>alert('Mala conexion a base de datos')</script>
+                <p>Falló la conexión ".$link->connect_error."</p>";
+    } //else echo "<script>alert('Conectado a la base de datos')</script>";
 ?>
 <html lang="es">
   <head>
     <!-- Required meta tags -->
-    <meta name="viewport" http-equiv="Content-Type" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes; charset=utf-8">
+    <meta name="viewport" http-equiv="Content-Type" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes" charset="UTF-8">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Personal CSS -->
@@ -78,7 +79,7 @@
             <!-- Agregar algo para hacer el data-toogle="collapse" con data-target="#infoRuta" y asi desplegar el menu de informacion ruta
                  y hacer un href="#flagNameRuta" para hacer que la pagina haga scroll down y el usuario se de cuenta-->
             <a href="#flagNameRuta"type="button" class="btn btn-link" data-toggle="collapse" data-target="#infoRuta" aria-expanded="false" aria-controls="infoRuta" onclick="mostrarInfo()">
-                <iframe id="main-map" src="https://www.google.com/maps/d/embed?mid=1sAdyj55AKuJ4RV2gjA0Q4rBM8q-VsDi5" frameborder="0" height="100%" width="100%" allowfullscreen></iframe>
+                <iframe id="main-map" src="https://www.google.com/maps/d/embed?mid=1sAdyj55AKuJ4RV2gjA0Q4rBM8q-VsDi5" frameborder="0" height="100%" width="100%" ></iframe>
             </a>
         </section>
             <div class="infoRuta bordes2 collapse" id="infoRuta">
@@ -118,21 +119,23 @@
                     Ciudad Universitaria (CU)
                     </a>
                 </div>
-                        <div id="CU-c" class="fil-content collapse" aria-labelledby="CU-h" data-parent="#sDer">
-                            <ul>
-                            <li>
+                        <div id="CU-c" class="collapse" aria-labelledby="CU-h" data-parent="#sDer">
                                 <?php
-                                    $lRutas = $link-query("SELECT rutas.nombre,calificaciones.cant_estrellas FROM rutas INNER JOIN calificaciones ON rutas.id_ruta=calificaciones.id_calificacion WHERE nombre_destino = 'CU' ORDER BY calificaciones.cant_estrellas DESC");
-                                    $ref='<a href="#" onclick="loadMap()">';
-                                    //Ciclo para imprimir n rutas acomodadas por mayor calificacion
-                                    while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
-                                        $nomRuta = $arrayRutas['rutas.nombre'];
-                                        $cantEstrellas = $arrayRutas['calificaciones.cant_estrellas'];
-                                        echo "<li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a>'."</li";
+                                    if($lRutas = $link->query("SELECT rutas.nombre, calificaciones.cant_estrellas FROM rutas LEFT JOIN calificaciones ON rutas.id_ruta=calificaciones.id_ruta WHERE rutas.nombre_destino = 'CU' ORDER BY calificaciones.cant_estrellas DESC")){
+                                        $ref='<a href="#" onclick="loadMap()">';
+                                        //Ciclo para imprimir n rutas acomodadas por mayor calificacion
+                                        while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
+                                            $nomRuta = $arrayRutas['nombre'];
+                                            $cantEstrellas = $arrayRutas['cant_estrellas'];
+                                            if($cantEstrellas == 0){
+                                                echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/0.png" class="imgE"></a></li></ul>';
+                                            }
+                                            else echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a></li></ul>';
+                                        }
+                                        $lRutas->free();
                                     }
-				                    $lRutas->free();
+                                    else echo "<script> alert('Error en la consulta')</script>";
                                 ?>
-                            </ul>
                         </div>
                 <div class="fil-header">
                     <a id="CAPU-h" type="botton" class="btn btn-link" data-toggle="collapse" data-target="#CAPU-c" aria-controls="CAPU-c">
@@ -140,21 +143,22 @@
                     </a>
                 </div>
                         <div id="CAPU-c" class="fil-content collapse" aria-labelledby="CAPU-h" data-parent="#sDer">
-                            <ul>
-                            <li><a href="#" onclick="loadMap()">
                                 <?php
-                                    $lRutas = $link-query("SELECT rutas.nombre,calificaciones.cant_estrellas FROM rutas INNER JOIN calificaciones ON rutas.id_ruta=calificaciones.id_calificacion WHERE nombre_destino = 'CAPU' ORDER BY calificaciones.cant_estrellas DESC");
-                                    $ref='<a href="#" onclick="loadMap()">';
-                                    //Ciclo para imprimir n rutas acomodadas por mayor calificacion
-                                    while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
-                                        $nomRuta = $arrayRutas['rutas.nombre'];
-                                        $cantEstrellas = $arrayRutas['calificaciones.cant_estrellas'];
-                                        echo "<li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a>'."</li";
+                                    if($lRutas = $link->query("SELECT rutas.nombre, calificaciones.cant_estrellas FROM rutas LEFT JOIN calificaciones ON rutas.id_ruta=calificaciones.id_ruta WHERE rutas.nombre_destino = 'CAPU' ORDER BY calificaciones.cant_estrellas DESC")){
+                                        $ref='<a href="#" onclick="loadMap()">';
+                                        //Ciclo para imprimir n rutas acomodadas por mayor calificacion
+                                        while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
+                                            $nomRuta = $arrayRutas['nombre'];
+                                            $cantEstrellas = $arrayRutas['cant_estrellas'];
+                                            if($cantEstrellas == 0){
+                                                echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/0.png" class="imgE"></a></li></ul>';
+                                            }
+                                            else echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a></li></ul>';
+                                        }
+                                        $lRutas->free();
                                     }
-				                    $lRutas->free();
+                                    else echo "<script> alert('Error en la consulta')</script>";
                                 ?>
-                                <img src="img/5estrellas.png" class="imgE"></a></li>
-                            </ul>
                         </div>
                 <div class="fil-header">
                    <a id="Loreto-h" type="botton" class="btn btn-link" data-toggle="collapse" data-target="#Loreto-c" aria-controls="Loreto-c">
@@ -162,21 +166,22 @@
                     </a>
                 </div>
                         <div id="Loreto-c" class="fil-content collapse" aria-labelledby="Loreto-h" data-parent="#sDer">
-                            <ul>
-                            <li><a href="#" onclick="loadMap()">
                                 <?php
-                                    $lRutas = $link-query("SELECT rutas.nombre,calificaciones.cant_estrellas FROM rutas INNER JOIN calificaciones ON rutas.id_ruta=calificaciones.id_calificacion WHERE nombre_destino = 'Fuertes' ORDER BY calificaciones.cant_estrellas DESC");
-                                    $ref='<a href="#" onclick="loadMap()">';
-                                    //Ciclo para imprimir n rutas acomodadas por mayor calificacion
-                                    while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
-                                        $nomRuta = $arrayRutas['rutas.nombre'];
-                                        $cantEstrellas = $arrayRutas['calificaciones.cant_estrellas'];
-                                        echo "<li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a>'."</li";
+                                    if($lRutas = $link->query("SELECT rutas.nombre, calificaciones.cant_estrellas FROM rutas LEFT JOIN calificaciones ON rutas.id_ruta=calificaciones.id_ruta WHERE rutas.nombre_destino = 'Fuertes' ORDER BY calificaciones.cant_estrellas DESC")){
+                                        $ref='<a href="#" onclick="loadMap()">';
+                                        //Ciclo para imprimir n rutas acomodadas por mayor calificacion
+                                        while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
+                                            $nomRuta = $arrayRutas['nombre'];
+                                            $cantEstrellas = $arrayRutas['cant_estrellas'];
+                                            if($cantEstrellas == 0){
+                                                echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/0.png" class="imgE"></a></li></ul>';
+                                            }
+                                            else echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a></li></ul>';
+                                        }
+                                        $lRutas->free();
                                     }
-				                    $lRutas->free();
+                                    else echo "<script> alert('Error en la consulta')</script>";
                                 ?>
-                                <img src="img/5estrellas.png" class="imgE"></a></li>
-                            </ul>
                         </div>
                 <div class="fil-header">
                     <a id="Ange-h" type="botton" class="btn btn-link" data-toggle="collapse" data-target="#Ange-c" aria-controls="Ange-c">
@@ -184,21 +189,22 @@
                     </a>
                 </div>
                         <div id="Ange-c" class="fil-content collapse" aria-labelledby="Ange-h" data-parent="#sDer">
-                            <ul>
-                            <li><a href="#" onclick="loadMap()">
                                 <?php
-                                    $lRutas = $link-query("SELECT rutas.nombre,calificaciones.cant_estrellas FROM rutas INNER JOIN calificaciones ON rutas.id_ruta=calificaciones.id_calificacion WHERE nombre_destino = 'Angelópolis' ORDER BY calificaciones.cant_estrellas DESC");
-                                    $ref='<a href="#" onclick="loadMap()">';
-                                    //Ciclo para imprimir n rutas acomodadas por mayor calificacion
-                                    while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
-                                        $nomRuta = $arrayRutas['rutas.nombre'];
-                                        $cantEstrellas = $arrayRutas['calificaciones.cant_estrellas'];
-                                        echo "<li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a>'."</li";
+                                    if($lRutas = $link->query("SELECT rutas.nombre, calificaciones.cant_estrellas FROM rutas LEFT JOIN calificaciones ON rutas.id_ruta=calificaciones.id_ruta WHERE rutas.nombre_destino = 'Angelópolis' ORDER BY calificaciones.cant_estrellas DESC")){
+                                        $ref='<a href="#" onclick="loadMap()">';
+                                        //Ciclo para imprimir n rutas acomodadas por mayor calificacion
+                                        while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
+                                            $nomRuta = $arrayRutas['nombre'];
+                                            $cantEstrellas = $arrayRutas['cant_estrellas'];
+                                            if($cantEstrellas == 0){
+                                                echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/0.png" class="imgE"></a></li></ul>';
+                                            }
+                                            else echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a></li></ul>';
+                                        }
+                                        $lRutas->free();
                                     }
-				                    $lRutas->free();
+                                    else echo "<script> alert('Error en la consulta')</script>";
                                 ?>
-                                <img src="img/5estrellas.png" class="imgE"></a></li>
-                            </ul>
                         </div>
                 <div class="fil-header">
                     <a id="CCU-h" type="botton" class="btn btn-link" data-toggle="collapse" data-target="#CCU-c" aria-controls="CCU-c">
@@ -206,21 +212,22 @@
                     </a>
                 </div>
                         <div id="CCU-c" class="fil-content collapse" aria-labelledby="CCU-h" data-parent="#sDer">
-                            <ul>
-                            <li><a href="#" onclick="loadMap()">
                                 <?php
-                                    $lRutas = $link-query("SELECT rutas.nombre,calificaciones.cant_estrellas FROM rutas INNER JOIN calificaciones ON rutas.id_ruta=calificaciones.id_calificacion WHERE nombre_destino = 'CCU' ORDER BY calificaciones.cant_estrellas DESC");
-                                    $ref='<a href="#" onclick="loadMap()">';
-                                    //Ciclo para imprimir n rutas acomodadas por mayor calificacion
-                                    while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
-                                        $nomRuta = $arrayRutas['rutas.nombre'];
-                                        $cantEstrellas = $arrayRutas['calificaciones.cant_estrellas'];
-                                        echo "<li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a>'."</li";
+                                    if($lRutas = $link->query("SELECT rutas.nombre, calificaciones.cant_estrellas FROM rutas LEFT JOIN calificaciones ON rutas.id_ruta=calificaciones.id_ruta WHERE rutas.nombre_destino = 'CCU' ORDER BY calificaciones.cant_estrellas DESC")){
+                                        $ref='<a href="#" onclick="loadMap()">';
+                                        //Ciclo para imprimir n rutas acomodadas por mayor calificacion
+                                        while($arrayRutas = $lRutas->fetch_array(MYSQLI_ASSOC)){
+                                            $nomRuta = $arrayRutas['nombre'];
+                                            $cantEstrellas = $arrayRutas['cant_estrellas'];
+                                            if($cantEstrellas == 0){
+                                                echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/0.png" class="imgE"></a></li></ul>';
+                                            }
+                                            else echo "<ul class='fil-content'><li>".$ref.$nomRuta.'<img src="img/estrellas/'.$cantEstrellas.'png" class="imgE"></a></li></ul>';
+                                        }
+                                        $lRutas->free();
                                     }
-				                    $lRutas->free();
+                                    else echo "<script> alert('Error en la consulta')</script>";
                                 ?>
-                                <img src="img/5estrellas.png" class="imgE"></a></li>
-                            </ul>
                         </div>
     </section>
     <!-- -------------------------------------------------------------------------------------------------------------------------- -->
