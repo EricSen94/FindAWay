@@ -1,12 +1,32 @@
 function mostrarInfo(){
     var ob = document.getElementById("infoRuta");
     ob.style.display="block";
-    document.getElementById("flagNameRuta").scrollIntoView(false);
+}
+function vaciarInfo(){
+     //Get the section  element with id="ruta"
+    var list = document.getElementById("ruta");
+    // As long as <section id="ruta" class="ruta"> has a child node, remove it
+    if(list.hasChildNodes()){
+        while( list.hasChildNodes() ) {
+            list.removeChild(list.lastChild);
+        }
+    }
+}
+function quitarInfo(){
+    var ob = document.getElementById("infoRuta");
+    ob.style.display="none";
+    vaciarInfo();
+}
+function llenarInfo(nomRuta,descRuta,callback){
+    callback();
+    var contenido = "<section class='ruta'><section class='infoC'><img src='img/camiones/"+nomRuta+".jpg' class='imgCamion'><span class='nombreRuta'><br>"+nomRuta+"</span></section><section class='descripcionC'><p>"+descRuta+"</p></section></section>"
+    document.getElementById('ruta').insertAdjacentHTML('beforeend', contenido);
+    mostrarInfo();
 }
 //Funcion para cargar cada mapa
 //en loadmap("nombreRuta")
-function loadMap()
-{
+function loadMap(){
+    vaciarInfo();
     //hacer un link para cada ruta
     var ruta10="https://www.google.com/maps/d/embed?mid=1_hCLxFvRH0-V_tvteuGLWY9xNlk&hl=es-419";
     //hacer un case con las diferentes nombres de las rutas
@@ -15,7 +35,6 @@ function loadMap()
     //document.getElementById('main-map').src = ruta10;
     //break;
     document.getElementById('main-map').src = ruta10;
-    mostrarInfo()
 }
 //Funcion para limpiar el mapa
 function clearMap()
@@ -24,10 +43,6 @@ function clearMap()
     quitarInfo();
 }
 
-function quitarInfo(){
-    var ob = document.getElementById("infoRuta");
-    ob.style.display="none";
-}
 //Funcion para agregar la página de preguntas y respuestas
 function loadDoc(opc){
          var xhttp = getObjXMLHttpRequest();
@@ -54,4 +69,4 @@ function getObjXMLHttpRequest(){
         http = new XMLHttpRequest();
         return http;
     }
-};
+}
