@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<?php
-    require 'scripts/Datos.php';
-?>
 <html lang="es">
   <head>
     <!-- Required meta tags -->
@@ -40,11 +37,13 @@
         </button>
 -->
         <!---------------------------------------------Limpiar -->
-        <button type="button" onclick="clearMap()" class="boton bordes btn btn-outline-info" data-toggle="tooltip collapse" data-placement="left"  data-target=".multi-collapse" aria-expanded="false" title="Limpiar búsqueda" aria-controls="buscar infoRuta" >
+        <h1>Limpia</h1>
+        <button type="button" onclick="clearMap()" class="boton bordes btn btn-outline-info" data-toggle="tooltip collapse" data-placement="left"  data-target=".multi-collapse" aria-expanded="false" title="Limpiar selección" aria-controls="buscar infoRuta" >
             <img class="imgBtn" src="img/nuevaB.png" >
         </button>
         <!---------------------------------------------Calificar -->
-        <button type="button" data-toggle="tooltip" data-placement="left" title="Calificar Ruta" class="boton bordes btn btn-outline-info" onclick="calificar()">
+        <h1>Califica</h1>
+        <button type="button" data-toggle="tooltip" data-placement="left" title="Calificar ruta" class="boton bordes btn btn-outline-info" onclick="calificar()">
             <img src="img/estrellaB.png" class="imgBtn">
         </button>
         <section class="redes bordes">
@@ -67,15 +66,10 @@
 -->
         <br>
         <section class="mapa bordes2" style="height:35vw;">
-            <!-- Cambiar por el mapa de google -->
-            <!-- Agregar algo para hacer el data-toogle="collapse" con data-target="#infoRuta" y asi desplegar el menu de informacion ruta
-                 y hacer un href="#flagNameRuta" para hacer que la pagina haga scroll down y el usuario se de cuenta-->
-            <a href="#flagNameRuta"type="button" class="btn btn-link" data-toggle="collapse" data-target="#infoRuta" aria-expanded="false" aria-controls="infoRuta" onclick="mostrarInfo()">
                 <iframe id="main-map" src="https://www.google.com/maps/d/embed?mid=1sAdyj55AKuJ4RV2gjA0Q4rBM8q-VsDi5" frameborder="0" height="100%" width="100%" ></iframe>
-            </a>
         </section>
             <div class="infoRuta bordes2 collapse" id="infoRuta">
-                <h1 id="flagNameRuta">Información Rutas</h1>
+                <h1 id="Iruta">Información Ruta</h1>
                 <!-- importante -->
                 <!-- Crear una funcion que vaya agregando N sections dependiendo de las rutas que pasan por el lugar buscado. en cada section poner cada una de las rutas -->
                 <section id="ruta" class="ruta">
@@ -95,6 +89,7 @@
                 </div>
                         <div id="CU-c" class="collapse" aria-labelledby="CU-h" data-parent="#sDer">
                                 <?php
+                                    require 'scripts/Datos.php';
                                     $tabla = new Datos();
                                     $tabla->llenarTabla('CU');
                                 ?>
@@ -104,7 +99,7 @@
                     Central de Autobuses de Puebla (CAPU)
                     </a>
                 </div>
-                        <div id="CAPU-c" class="fil-content collapse" aria-labelledby="CAPU-h" data-parent="#sDer">
+                        <div id="CAPU-c" class="collapse" aria-labelledby="CAPU-h" data-parent="#sDer">
                                 <?php
                                     $tabla = new Datos();
                                     $tabla->llenarTabla('CAPU');
@@ -115,7 +110,7 @@
                     Los fuertes de Loreto
                     </a>
                 </div>
-                        <div id="Loreto-c" class="fil-content collapse" aria-labelledby="Loreto-h" data-parent="#sDer">
+                        <div id="Loreto-c" class="collapse" aria-labelledby="Loreto-h" data-parent="#sDer">
                                 <?php
                                     $tabla = new Datos();
                                     $tabla->llenarTabla('Fuertes');
@@ -126,7 +121,7 @@
                     Angelópolis centro comercial
                     </a>
                 </div>
-                        <div id="Ange-c" class="fil-content collapse" aria-labelledby="Ange-h" data-parent="#sDer">
+                        <div id="Ange-c" class="collapse" aria-labelledby="Ange-h" data-parent="#sDer">
                                 <?php
                                     $tabla = new Datos();
                                     $tabla->llenarTabla('Angelopolis');
@@ -137,7 +132,7 @@
                     Complejo Cultural Universitario (CCU)
                     </a>
                 </div>
-                        <div id="CCU-c" class="fil-content collapse" aria-labelledby="CCU-h" data-parent="#sDer">
+                        <div id="CCU-c" class="collapse" aria-labelledby="CCU-h" data-parent="#sDer">
                                 <?php
                                     $tabla = new Datos();
                                     $tabla->llenarTabla('CCU');
