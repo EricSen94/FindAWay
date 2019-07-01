@@ -22,8 +22,8 @@ a,p,span{
 .bordes{
     border: #ff6644  1px ridge;
     padding: .1vw .1vw .1vw .1vw;
-    border-top-left-radius: 1.2vw;
-    border-bottom-right-radius: 1.2vw;
+    border-top-left-radius: .5vw;
+    border-bottom-right-radius: .5vw;
 }
 .bordes2{
     border: #1e96e0  1px ridge;
@@ -99,8 +99,8 @@ a,p,span{
 }
 .mapa{
     position: relative;
-    margin-top: 5px;
-    width: 98%;
+    margin-top: 5px auto 0px auto;
+    width: 99.5%;
     height: 35vw;
 }
 #main-map{
@@ -154,40 +154,42 @@ a,p,span{
     width: 15.5vw;
     height: auto;
     margin: .5vw 0vw .5vw 0vw;
-    padding: .5vw .5vw .5vw .5vw;
+    padding: .5vw 0vw .5vw 0vw;
 }
 .fil-header{
+    width: 97%;
     margin: .5vw auto;
     border-radius: 1vw;
     background-color: white;
 }
 .fil-content{
+    display: block;
     text-align: left;
     width: 95%;
-    padding-top: 5px;
-    margin: 0px auto 0px auto;
+    margin: auto;
     border-radius: 1vw;
-}
-.fil-content li{
-    list-style-type:none;
-}
-.fil-content li a{
-    text-decoration: none;
 }
 .fil-header:hover{
     background-color: #44adeb;
-    width: 95%;
+    width: 94%;
 }
 .fil-content:hover{
     text-decoration: none;
     background-color: #44adeb;
-    width: 90%;
+    width: 97%;
+}
+.fil-col{
+    display: inline-block;
+    vertical-align: middle;
+    margin:auto;
+    padding: .5vw;
+    width: 50% !important;
 }
 .imgBu{
     width: 4vw;
 }
 .imgE{
-    width: 6vw;
+    width: 100%;
 }
 .footer{
     position: absolute;
