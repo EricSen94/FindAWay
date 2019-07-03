@@ -17,24 +17,18 @@ function quitarInfo(){
     ob.style.display="none";
     vaciarInfo();
 }
-function llenarInfo(nomRuta,descRuta,callback){
-    callback();
+function llenarInfo(nomRuta,descRuta,mapRuta,callback){
+    callback(mapRuta);
     var contenido = "<section class='ruta'><section class='infoC'><img src='img/camiones/"+nomRuta+".jpg' class='imgCamion'><span class='nombreRuta'><br>"+nomRuta+"</span></section><section class='descripcionC'><p>"+descRuta+"</p></section></section>"
     document.getElementById('ruta').insertAdjacentHTML('beforeend', contenido);
     mostrarInfo();
 }
 //Funcion para cargar cada mapa
-//en loadmap("nombreRuta")
-function loadMap(){
+function loadMap(mapRuta){
+    document.getElementById('main-map').src = mapRuta;
+//    var ruta10="https://www.google.com/maps/d/embed?mid=1_hCLxFvRH0-V_tvteuGLWY9xNlk&hl=es-419";
+//    document.getElementById('main-map').src = ruta10;
     vaciarInfo();
-    //hacer un link para cada ruta
-    var ruta10="https://www.google.com/maps/d/embed?mid=1_hCLxFvRH0-V_tvteuGLWY9xNlk&hl=es-419";
-    //hacer un case con las diferentes nombres de las rutas
-    //switch (nombreRuta)
-    //case "ruta10"
-    //document.getElementById('main-map').src = ruta10;
-    //break;
-    document.getElementById('main-map').src = ruta10;
 }
 //Funcion para limpiar el mapa
 function clearMap()
