@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 16-06-2019 a las 05:33:44
+-- Tiempo de generación: 03-07-2019 a las 17:44:28
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 5.6.35
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `findaway`
 --
-CREATE DATABASE IF NOT EXISTS `findaway` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `findaway`;
 
 -- --------------------------------------------------------
 
@@ -157,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `rutas` (
   `nombre_destino` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `esquina_DestinoA` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `esquina_DestinoB` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `imagen` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `mapa` varchar(1000) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_ruta`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -165,14 +163,14 @@ CREATE TABLE IF NOT EXISTS `rutas` (
 -- Volcado de datos para la tabla `rutas`
 --
 
-INSERT INTO `rutas` (`id_ruta`, `nombre`, `descripcion`, `nombre_origen`, `esquina_OrigenA`, `esquina_OrigenB`, `nombre_destino`, `esquina_DestinoA`, `esquina_DestinoB`, `imagen`) VALUES
-(1, 'ruta 29', 'Pasa del centro a Angelópolis. Solo camiones con frente verde y los laterales de color blanco liso. ', 'Centro', '7 sur', '11 poniente', 'Angelópolis', 'Blvd Niño Poblano', 'Vía Atlixcayotl', '/img/ruta29.jpg'),
-(2, 'ruta 45a', 'Llega del centro a Angelópolis. Camión grande totalmente blanca y con número de ruta enfrente .', 'Centro', '2 sur', '11 poniente', 'Angelópolis', 'Blvd Niño Poblano', 'Vía Atlixcayotl', '/img/ruta45.jpg'),
-(3, 'RUTA 3', 'Metrobús para llegar del centro a CAPU. Camión articulado con paradero específico blanco con el logo de ruta 3 en los laterales y \'R\' con logotipo de nueva ruta .', 'Centro', 'Analco', '', 'CAPU', 'Hueyotlipan', '', '/img/RUTA3.jpg'),
-(4, 'Bicentenario', 'Ruta Bicentenario para llegar del CU a CCU. Camión grande color verde y con el logo de la ruta en todo el lateral .', 'CU', '18 sur', 'Blvd. Circunvalación', 'CCU', 'Cúmulo de Virgo', 'Vía Atlixcayotl', '/img/Bicentenario.jpg'),
-(5, 'Boulevard CU', 'Camión usualmente viejo de color azul de la parte de enfrente, los laterales en la parte superior crema, inferior azul con líneas que separan de color rojo y amarillo. ', 'Centro', '7 sur', '31 poniente', 'CU', '18 sur', 'Blvd. Circunvalación', '/img/BoulevardCU.jpg'),
-(6, 'ruta 33', 'Color blanco con el frontal blanco con un número 33 en color rojo , el lateral es blanco con una línea recta y al final.inclinada de color gris roja azul, con cartel naranja.', 'Centro', '3 sur', '9 poniente', 'CU', 'Avenida San Claudio', '14 sur', '/img/ruta33.jpg'),
-(7, 'ruta 72a', 'Camión grande de color blanco con el frontal blanco con número de la ruta y cu de color naranja , en el lateral una línea roja con azul .', 'Centro', '11 poniente', '2 sur', 'Fuertes', 'Calzada Zaragoza', '32 poniente', '/img/ruta72a.jpg');
+INSERT INTO `rutas` (`id_ruta`, `nombre`, `descripcion`, `nombre_origen`, `esquina_OrigenA`, `esquina_OrigenB`, `nombre_destino`, `esquina_DestinoA`, `esquina_DestinoB`, `mapa`) VALUES
+(1, 'ruta 29', 'Pasa del centro a Angelópolis. Solo camiones con frente verde y los laterales de color blanco liso. ', 'Centro', '7 sur', '11 poniente', 'Angelópolis', 'Blvd Niño Poblano', 'Vía Atlixcayotl', 'https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d30172.38810454633!2d-98.2332005733817!3d19.03960642494977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e3!4m3!3m2!1d19.0443311!2d-98.1987731!4m3!3m2!1d19.0319738!2d-98.23095149999999!5e0!3m2!1ses-419!2smx!4v1562173373663!5m2!1ses-419!2smx'),
+(2, 'ruta 45a', 'Llega del centro a Angelópolis. Camión grande totalmente blanca y con número de ruta enfrente .', 'Centro', '2 sur', '11 poniente', 'Angelópolis', 'Blvd Niño Poblano', 'Vía Atlixcayotl', 'deadRuta.php'),
+(3, 'RUTA 3', 'Metrobús para llegar del centro a CAPU. Camión articulado con paradero específico blanco con el logo de ruta 3 en los laterales y  con logotipo R de nueva ruta .', 'Centro', 'Analco', '', 'CAPU', 'Hueyotlipan', '', 'https://www.google.com/maps/embed?pb=!1m36!1m12!1m3!1d30168.967148184907!2d-98.21472332336302!3d19.058421574258357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m21!3e6!4m3!3m2!1d19.0443311!2d-98.1987731!4m3!3m2!1d19.0411405!2d-98.19321289999999!4m3!3m2!1d19.066023899999998!2d-98.19116269999999!4m3!3m2!1d19.072553799999998!2d-98.1949001!4m3!3m2!1d19.0738104!2d-98.2040518!5e0!3m2!1ses-419!2smx!4v1562173043257!5m2!1ses-419!2smx'),
+(4, 'Bicentenario', 'Ruta Bicentenario para llegar del CU a CCU. Camión grande color verde y con el logo de la ruta en todo el lateral .', 'CU', '18 sur', 'Blvd. Circunvalación', 'CCU', 'Cúmulo de Virgo', 'Vía Atlixcayotl', 'https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d60347.078149149536!2d-98.25616622340776!3d19.0332721006686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e3!4m3!3m2!1d19.0443311!2d-98.1987731!4m3!3m2!1d19.022488199999998!2d-98.2426435!5e0!3m2!1ses-419!2smx!4v1562173255295!5m2!1ses-419!2smx'),
+(5, 'Boulevard CU', 'Camión usualmente viejo de color azul de la parte de enfrente, los laterales en la parte superior crema, inferior azul con líneas que separan de color rojo y amarillo. ', 'Centro', '7 sur', '31 poniente', 'CU', '18 sur', 'Blvd. Circunvalación', 'https://www.google.com/maps/embed?pb=!1m22!1m8!1m3!1d30175.212252666322!2d-98.218558!3d19.0240602!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m5!1s0x85cfc0de93dda877%3A0xb42a9d723740b496!2sCentro%2C+Puebla%2C+Pue.!3m2!1d19.0437335!2d-98.1980244!4m3!3m2!1d19.005157!2d-98.204402!5e0!3m2!1ses-419!2smx!4v1562171519907!5m2!1ses-419!2smx'),
+(6, 'ruta 33', 'Color blanco con el frontal blanco con un número 33 en color rojo , el lateral es blanco con una línea recta y al final.inclinada de color gris roja azul, con cartel naranja.', 'Centro', '3 sur', '9 poniente', 'CU', 'Avenida San Claudio', '14 sur', 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d30175.76183810754!2d-98.21954925449984!3d19.021033448203713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m3!3m2!1d19.0443311!2d-98.1987731!4m3!3m2!1d19.0411405!2d-98.19321289999999!4m3!3m2!1d18.9995387!2d-98.2042239!5e0!3m2!1ses-419!2smx!4v1562171897608!5m2!1ses-419!2smx'),
+(7, 'ruta 72a', 'Camión grande de color blanco con el frontal blanco con número de la ruta y cu de color naranja , en el lateral una línea roja con azul .', 'Centro', '11 poniente', '2 sur', 'Fuertes', 'Calzada Zaragoza', '32 poniente', 'https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d15085.255660102612!2d-98.20034622093156!3d19.049930893644497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d19.0443311!2d-98.1987731!4m3!3m2!1d19.0595905!2d-98.18569149999999!5e0!3m2!1ses-419!2smx!4v1562173150723!5m2!1ses-419!2smx');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
