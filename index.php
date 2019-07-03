@@ -66,12 +66,10 @@
 -->
         <br>
         <section class="mapa bordes2" style="height:35vw;">
-                <iframe id="main-map" src="https://www.google.com/maps/d/embed?mid=1sAdyj55AKuJ4RV2gjA0Q4rBM8q-VsDi5" frameborder="0" height="100%" width="100%" ></iframe>
+                <iframe id="main-map" src="https://www.google.com/maps/d/embed?mid=1sAdyj55AKuJ4RV2gjA0Q4rBM8q-VsDi5" frameborder="0" height="100%" width="99%" scrolling="no"></iframe>
         </section>
             <div class="infoRuta bordes2 collapse" id="infoRuta">
                 <h1 id="Iruta">Información Ruta</h1>
-                <!-- importante -->
-                <!-- Crear una funcion que vaya agregando N sections dependiendo de las rutas que pasan por el lugar buscado. en cada section poner cada una de las rutas -->
                 <section id="ruta" class="ruta">
                 </section>
             </div>
